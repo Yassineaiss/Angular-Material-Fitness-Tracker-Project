@@ -1,6 +1,11 @@
 <section class="signup-forms">
-  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <mat-form-field >
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #f="ngForm"
+    (ngSubmit)="onSubmit(f)"
+  >
+    <mat-form-field>
       <input
         type="email"
         matInput
@@ -11,8 +16,12 @@
         required
         #emailInput="ngModel"
       />
-      <mat-error *ngIf="emailInput.hasError('required')">Fieled must not be empty</mat-error>
-      <mat-error *ngIf="!emailInput.hasError('required')">E-Mail is Invalid</mat-error>
+      <mat-error *ngIf="emailInput.hasError('required')"
+        >Fieled must not be empty</mat-error
+      >
+      <mat-error *ngIf="!emailInput.hasError('required')"
+        >E-Mail is Invalid</mat-error
+      >
     </mat-form-field>
     <br />
     <mat-form-field hintLabel="Should be at least 6 characters long.">
@@ -27,11 +36,16 @@
         #pwInput="ngModel"
       />
       <!-- numerotation -->
-      <mat-hint align="end">{{pwInput.value?.length}}/ 6</mat-hint>
+      <mat-hint align="end">{{ pwInput.value?.length }}/ 6</mat-hint>
       <mat-error>Has to be at least 6 characters</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Your date of birth" [matDatepicker]="picker">
+      <input
+        matInput
+        placeholder="Your date of birth"
+        [matDatepicker]="picker"
+        [max]="maxDate"
+      />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
