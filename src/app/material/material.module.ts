@@ -7,6 +7,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 
@@ -18,7 +20,8 @@ const materials: any[] | Type<any> | ModuleWithProviders<{}> = [
   MatNativeDateModule,
   MatCheckboxModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatIconModule
 ];
 
 @NgModule({
