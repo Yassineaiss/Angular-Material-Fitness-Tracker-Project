@@ -12,6 +12,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 
@@ -29,7 +31,9 @@ const materials: any[] | Type<any> | ModuleWithProviders<{}> = [
   MatIconModule,
   MatListModule,
   MatTabsModule,
-  MatCardModule,MatSelectModule
+  MatCardModule,
+  MatSelectModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({
