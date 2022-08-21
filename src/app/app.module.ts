@@ -15,6 +15,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import {  FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { StopTrainingComponent } from './training/current-training/stop-training.component';
 
 
 
@@ -29,7 +30,8 @@ import { SidenavComponent } from './navigation/sidenav-list/sidenav-list.compone
     PastTrainingComponent,
     WelcomeComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    StopTrainingComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { SidenavComponent } from './navigation/sidenav-list/sidenav-list.compone
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[StopTrainingComponent]
 })
 export class AppModule { }
