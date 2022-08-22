@@ -14,6 +14,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -36,6 +37,7 @@ const materials: any[] | Type<any> | ModuleWithProviders<{}> = [
   MatProgressSpinnerModule,
   MatDialogModule,
   MatIconModule,
+  MatTableModule
 ];
 
 @NgModule({
