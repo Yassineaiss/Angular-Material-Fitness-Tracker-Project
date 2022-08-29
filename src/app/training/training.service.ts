@@ -6,12 +6,12 @@ import { Exercise } from './exercise.model';
 @Injectable()
 export class TrainingService {
   exerciseChanged = new Subject<Exercise | null>();
-  exercisesChanged = new Subject<Exercise[]>();
+  exercisesChanged = new Subject<Exercise[] | any>();
+  finishedExercisesChanged = new Subject<Exercise[] | any>();
 
   private availbaleExercises: Exercise[] = [];
 
   private runningExercise: Exercise | any | null;
-  private exercises: Exercise[] = [];
 
   constructor(private db: AngularFirestore) {}
 
@@ -45,7 +45,7 @@ export class TrainingService {
   }
 
   completeExercise() {
-   this.addDataToDatabase({
+    this.addDataToDatabase({
       ...this.runningExercise,
       date: new Date(),
       state: 'completed',
@@ -67,10 +67,17 @@ export class TrainingService {
   getRunningExercise() {
     return { ...this.runningExercise };
   }
-  getCompletedOrCancelledExercises() {
-    return this.exercises.slice();
+
+  fetchCompletedOrCancelledExercises() {
+    this.db
+      .collection('finishedExercises')
+      .valueChanges()
+      .subscribe((exercises) => {
+        this.finishedExercisesChanged.next(exercises);
+      });
   }
-  private addDataToDatabase(exercise: Exercise){
-  this.db.collection('finishedExercises').add(exercise);
+
+  private addDataToDatabase(exercise: Exercise) {
+    this.db.collection('finishedExercises').add(exercise);
   }
 }
