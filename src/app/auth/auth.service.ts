@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { TrainingService } from '../training/training.service';
 import { AuthData } from './auth-data.model';
 import { User } from './user.model';
 
@@ -10,7 +11,11 @@ export class AuthService {
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
 
-  constructor(private router: Router, private auth: AngularFireAuth) {}
+  constructor(
+    private router: Router,
+    private auth: AngularFireAuth,
+    private trainingService: TrainingService
+  ) {}
 
   registerUser(authData: AuthData) {
     this.auth
@@ -35,6 +40,7 @@ export class AuthService {
     this.authSuccessfully();
   }
   logout() {
+    this.trainingService.cancelSubscriptions();
     this.authChange.next(false);
     this.router.navigate(['/login']);
     this.isAuthenticated = false;
